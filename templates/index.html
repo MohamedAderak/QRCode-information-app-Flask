@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="225x225" width="1000" height="1000" href="images/shopp.png">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src='https://kit.fontawesome.com/fd1951dcdd.js' crossorigin='anonymous'></script>
+  <title>Bracelet Helper</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/fd1951dcdd.js" crossorigin="anonymous"></script>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
+    body {
+      background: #c9ccd1;
+      color: #fff;
+    }
+
+    button {
+      height: 50px;
+    }
+
+    .carousel-item {
+      min-height: 100px;
+    }
+
+    .bg {
+      background-color: #24BCEC;
+    }
+
+    .p-15 {
+      padding: 100px 0;
+    }
+
+    .bg-pink {
+      background-color: #FEA5E5;
+      color: #fff;
+    }
+
+    .bg-pink:hover {
+      background-color: #ac2bac;
+      color: #fff;
+    }
+
+    .txt{
+      font-family: 'Dancing Script', sans-serif;
+      padding: 2em;
+    }
+
+    .rounded-right {
+      border-radius: 0 25px 25px 0 !important;
+    }
+
+    .rounded-left {
+      border-radius: 25px 0 0 25px !important;
+    }
+
+    .rounded-bottom {
+      border-radius: 0 0 25px 25px !important;
+    }
+
+    .rounded-top {
+      border-radius: 25px 25px 0 0 !important;
+    }
+
+    .round {
+      border-radius: 25px;
+    }
+
+    /* .bg-img {
+      background-image: url("lost-child.jpg");
+      background-position: top;
+      background-size: cover;
+      background-size: 100%;
+      width: 100%;
+      height: 300px;
+    } */
+
+    /* Container holding the image and the text */
+    .container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    /* Bottom left text */
+    .bottom-left {
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+    }
+
+    /* Top left text */
+    .top-left {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+    }
+
+    /* Top right text */
+    .top-right {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+    }
+
+    /* Bottom right text */
+    .bottom-right {
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+    }
+
+    /* Centered text */
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Form login style */
+    .formLogin {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: -100%;
+    }
+
+    .formLogin.active {
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    #formContent {
+      background-color: whitesmoke;
+      border-radius: 0 0 10% 10%;
+      padding: 0 2rem 0 2rem;
+      width: 100%;
+      height: 100%;
+      max-width: 500px;
+      max-height: 500px;
+      position: relative;
+      box-shadow: 0 0 10px #464647;
+      text-align: center;
+    }
+
+
+    p.legend {
+      text-align: center;
+      font-weight: 900;
+      color: #24BCEC;
+      font-size: 28px;
+      font-family: 'Dancing Script', sans-serif;
+      text-align: center;
+      letter-spacing: 1px;
+      margin: 2em 0;
+    }
+
+    p.legend span {
+      color: #fff;
+      margin-left: 10px;
+    }
+
+    #formContent .input {
+      position: relative;
+      margin: 20px auto;
+    }
+
+    #formContent .input span {
+      position: absolute;
+      display: block;
+      color: #24BCEC;
+      left: 10px;
+      top: 12px;
+      font-size: 18px;
+    }
+
+    #formContent .input input {
+      width: 100%;
+      display: block;
+      transition: 0.2s ease-out;
+      color: #000;
+      box-sizing: border-box;
+      font-size: 14px;
+      outline: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .submit:hover,
+    .submit:focus {
+      background: #24BCEC;
+      color: #fff !important;
+    }
+
+    input[type=email],
+    input[type="password"] {
+      background: transparent;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 0 1px skyblue;
+      border-radius: 20px;
+    }
+
+    input[type=email]:focus,
+    input[type="password"]:focus {
+      box-shadow: 0 0 10px #FEA5E5;
+      color: #fff;
+    }
+
+
+
+    .hover {
+      color: #fff !important;
+      background: var(--purple) !important;
+    }
+
+
+    /* ANIMATIONS */
+
+    /* Fade-in-down Animation */
+
+    .fadeInDown.active {
+      animation-name: fadeInDown;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+      }
+
+      50% {
+        opacity: .5;
+        transform: translate3d(0, 20%, 0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Fade-in Animation */
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fadeIn.active {
+      opacity: 0;
+      animation: fadeIn ease-in 1s;
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+    }
+
+    .fadeIn-first {
+      animation-delay: 4s;
+    }
+
+    .fadeIn-second.active {
+      animation-delay: 0.6s;
+    }
+
+    .fadeIn-third.active {
+      animation-delay: 0.8s;
+    }
+
+    .fadeIn-fourth.active {
+      animation-delay: 1s;
+    }
+
+    .color {
+      color: red;
+      font-size: 2em;
+      margin-left: 13.7em;
+    }
+  </style>
+</head>
+
+<body>
+<!-- form login -->
+
+  <div class="formLogin fadeInDown">
+    <div id="formContent">
+      <i class="fas fa-xmark d-flex color" id="delete" title="delete"></i>
+      <form action="login.html" method="post">
+        <p class="legend fadeIn-first">Login Here<span class="fa fa-hand-o-down"></span></p>
+        <div class="input">
+          <input type="email" placeholder="Email" class="fadeIn-second" name="email" required />
+          <span class="fa fa-envelope"></span>
+        </div>
+        <div class="input">
+          <input type="password" placeholder="Password" class="fadeIn-third" name="password" required />
+          <span class="fa fa-unlock"></span>
+        </div>
+        <button type="submit" class="btn bg rounded-pill fadeIn-fourth submit">Log in</button>
+      </form>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand" href="#"><img style="width: 20%;" src="/static/logo.png" alt=""></a>
+      <div class="navbar d-flex justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link btn p-2 rounded-pill" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn p-2 rounded-pill" href="#">Help</a>
+          </li>
+          <li>
+            <a id="login" class="nav-link btn bg p-2 rounded-pill">Connexion<i class="fas fa-user-plus ml-1"
+                title="Sign-in"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
+      <!-- Carousel indicators -->
+      <ol class="carousel-indicators">
+        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+      </ol>
+
+      <!-- Wrapper for carousel items -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="d-none d-md-block">
+            <div class="row m-5 no-gutters shadow bg-danger round">
+              <div class="col-md-6 col-sm-12 bg rounded-left p-15">
+                <h3 class="pb-3">Model for the Children</h3>
+                <h3 class="pb-5 txt">Keep your child safe and secure with our Bracelet Helper</h3>
+                <div class="mt-4 d-flex justify-content-center">
+                  <a href="/Child/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('child').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Fill in
+                    the informations</button></a>
+                  <form id="child" action="/Child/{{id}}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <img src="/static/lost.webp" class="img-fluid rounded-right" style="width:100%" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-none d-md-block">
+            <div class="row m-5 no-gutters shadow bg-danger round">
+              <div class="col-md-6 col-sm-12 bg rounded-left p-15">
+                <h3 class="pb-3">Model for the elderly</h3>
+                <h3 class="pb-5 txt">Keep your parents safe and secure with our Bracelet Helper</h3>
+                <div class="mt-4 d-flex justify-content-center">
+                  <a href="/Old/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('old').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Fill in
+                    the informations</button></a>
+                  <form id="old" action="/Old/{{id}}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12">
+                <img src="/static/old.jpg" class="img-fluid rounded-right" style="width:100%" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel controls -->
+      <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </div>
+  </div>
+  <footer class="bg-light text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4" id="contact">
+      <!-- Section: Social media -->
+      <section class="mb-2">
+        <!-- Facebook -->
+        <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="#!" role="button"><i
+            class="fab fa-facebook-f"></i></a>
+
+        <!-- Twitter -->
+        <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="#!" role="button"><i
+            class="fab fa-twitter"></i></a>
+
+        <!-- Google -->
+        <a class="btn text-white btn-floating m-1" style="background-color: #dd4b39;"
+          href="mailto:daughterofaafane@gmail.com" role="button"><i class="fab fa-google"></i></a>
+
+        <!-- Instagram -->
+        <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="#!" role="button"><i
+            class="fab fa-instagram"></i></a>
+
+        <!-- Whatsapp -->
+        <a class="btn text-white btn-floating m-1" style="background-color: #44f473;"
+          href="https://api.whatsapp.com/send/?phone=212619966306&text&type=phone_number&app_absent=0" target="_blank"
+          role="button"><i class="fab fa-whatsapp"></i></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright
+      <a class="text-white" href="#"></a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</body>
+
+</html>
+
+
+<script>
+  document.querySelector('#login').onclick = () => {
+    document.querySelector('.formLogin').classList.toggle('active');
+  }
+  document.getElementById("delete").onclick = () => {
+    document.querySelector('.formLogin').classList.remove('active');
+  }
+</script>
