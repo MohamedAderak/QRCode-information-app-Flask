@@ -15,189 +15,209 @@
     <script src="https://kit.fontawesome.com/fd1951dcdd.js" crossorigin="anonymous"></script>
     <title>Bracelet Helper</title>
     <style>
-        .card-registration{
+        .card-registration {
             top: 13px;
         }
 
         .card {
             background-color: aliceblue;
         }
+
+        .logo {
+            max-width: 200px;
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                max-width: 150px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <img src="/static/logo.png" alt="Logo" style="width: 25%;" class="img-responsive">
-            <div class="card card-registration my-4">
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center">
+            <img src="/static/logo.png" alt="Logo" class="img-fluid logo my-4">
+            <div class="card card-registration">
                 <div class="card-body p-md-5 text-black">
-                    <div class="d-flex">
-                        <img src="{{Person['image-old']}}" alt="Photo" class="img-fluid my-5" style="width: 80px;" />
-                        <h3 class="text-center m-5 pt-5">Informations Personelles :</h3>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="{{Person['image-old']}}" alt="Photo" class="img-fluid" style="width: 80px;">
+                        <h3 class="text-center mx-4">Informations Personelles :</h3>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="nom">Nom :</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Nom :</h5>
                                 <p>{{ Person['nom'] }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="prenom">Prénom : </h5>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Prénom :</h5>
                                 <p>{{ Person['prenom'] }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="birthday">Date de naissance : </h5>
-                                <p> {{ Person['birthday'] }}</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Date de naissance :</h5>
+                                <p>{{ Person['birthday'] }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="numCIN">CIN :</h5>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">CIN :</h5>
                                 <p>{{ Person['cin'] }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="phone_number">N° de Tel des proches :</h5>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">N° de Tel des proches :</h5>
                                 <p>{{ Person['phone1'] }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="phone_number2">Autre N° de Tel des proches :</h5>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Autre N° de Tel des proches :</h5>
                                 <p>{{ Person['phone2'] }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="adress">Addresse :</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Addresse :</h5>
                                 <p>{{ Person['adress'] }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="email">Email :</h5>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h5 class="mb-0 me-4">Email :</h5>
                                 <p>{{ Person['email'] }}</p>
                             </div>
                         </div>
                     </div>
 
-
                     <hr>
-                    <h3 class="text-center m-5">Informations de Santé :</h3>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Pothèse dentaire : </h6>
-                                <p class="mb-0 me-4">{{ Person['potheseDentaire'] }}</p>
+                    <h3 class="text-center my-4">Informations de Santé :</h3>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Pothèse dentaire :</h6>
+                                <p>{{ Person['potheseDentaire'] }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Mutuelle : </h6>
-                                <p class="mb-0 me-4">{{ Person['mutuelle'] }}</p>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Mutuelle :</h6>
+                                <p>{{ Person['mutuelle'] }}</p>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                    <h6 class="mb-0 me-4">Il/Elle est : </h6>
-                                    <p class="mb-0 me-4">{{ Person['sourd&malvoyant'] }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                    <h6 class="mb-0 me-4">Poids : </h6>
-                                    <p class="mb-0 me-4">{{ Person['poids'] }}</p>
-                                </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Il/Elle est :</h6>
+                                <p>{{ Person['sourd&malvoyant'] }}</p>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Poids :</h6>
+                                <p>{{ Person['poids'] }}</p>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Group sanguin et rhésus : </h6>
-                                <p class="mb-0 me-4">{{ Person['sanguin'] }}</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Group sanguin et rhésus :</h6>
+                                <p>{{ Person['sanguin'] }}</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                    <h6 class="mb-0 me-4">Maladie chronique : </h6>
-                                    <p class="mb-0 me-4">{{ Person['chronique'] }}</p>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Maladie chronique :</h6>
+                                <p>{{ Person['chronique'] }}</p>
                             </div>
-                            <div class="col-6 mb-4">
-                                <h6 class="mb-0 me-4">Autre Maladie chronique : </h6>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Autre Maladie chronique :</h6>
                                 <p>{{ Person['autremaladiecronique'] }}</p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Maladie actuelle : </h6>
-                                <p class="mb-0 me-4">{{ Person['maladieactuelle'] }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Traitement actuelle : </h6>
-                                <p class="mb-0 me-4">{{ Person['Traitementactuelle'] }}</p>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Allergies : </h6>
-                                <p class="mb-0 me-4">{{ Person['allergies'] }}</p>
-                            </div>
-                        </div>
-                        <div class="col-6 mb-4">
-                            <h6 class="mb-0 me-4">Autre Allergies : </h6>
-                            <p>{{ Person['autreallergies'] }}</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class=" mb-0 me-4">Antécédents médicaux : </h6>
-                                <p class="mb-0 me-4">{{ Person['antecedmedicaux'] }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Antécédents chirurgicaux : </h6>
-                                <p class="mb-0 me-4">{{ Person['antecedchirurgicaux'] }}</p>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Maladie actuelle :</h6>
+                                <p>{{ Person['maladieactuelle'] }}</p>
                             </div>
                         </div>
                     </div>
 
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Traitement actuel :</h6>
+                                <p>{{ Person['Traitementactuelle'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Allergies :</h6>
+                                <p>{{ Person['allergies'] }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Autre Allergies :</h6>
+                                <p>{{ Person['autreallergies'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Antécédents médicaux :</h6>
+                                <p>{{ Person['antecedmedicaux'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Antécédents chirurgicaux :</h6>
+                                <p>{{ Person['antecedchirurgicaux'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
-                        <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                            <h6 class="mb-0 me-4">Pothèse titanique en places : </h6>
-                            <p class="mb-0 me-4">{{ Person['pothesetitanique'] }}</p>
+                        <div class="col">
+                            <div class="d-flex">
+                                <h6 class="mb-0 me-4">Pothèse titanique en place :</h6>
+                                <p>{{ Person['pothesetitanique'] }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

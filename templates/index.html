@@ -69,15 +69,6 @@
       border-radius: 25px;
     }
 
-    /* .bg-img {
-      background-image: url("lost-child.jpg");
-      background-position: top;
-      background-size: cover;
-      background-size: 100%;
-      width: 100%;
-      height: 300px;
-    } */
-
     /* Container holding the image and the text */
     .container {
       width: 100%;
@@ -123,37 +114,8 @@
       transform: translate(-50%, -50%);
     }
 
-    /* Form login style */
-    .formLogin {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: -100%;
-    }
 
-    .formLogin.active {
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      margin-top: 20px;
-    }
 
-    #formContent {
-      background-color: whitesmoke;
-      border-radius: 0 0 10% 10%;
-      padding: 0 2rem 0 2rem;
-      width: 100%;
-      height: 100%;
-      max-width: 500px;
-      max-height: 500px;
-      position: relative;
-      box-shadow: 0 0 10px #464647;
-      text-align: center;
-    }
 
 
     p.legend {
@@ -172,30 +134,7 @@
       margin-left: 10px;
     }
 
-    #formContent .input {
-      position: relative;
-      margin: 20px auto;
-    }
 
-    #formContent .input span {
-      position: absolute;
-      display: block;
-      color: #24BCEC;
-      left: 10px;
-      top: 12px;
-      font-size: 18px;
-    }
-
-    #formContent .input input {
-      width: 100%;
-      display: block;
-      transition: 0.2s ease-out;
-      color: #000;
-      box-sizing: border-box;
-      font-size: 14px;
-      outline: none;
-      letter-spacing: 1px;
-    }
 
     .nav-link:hover,
     .nav-link:focus,
@@ -204,23 +143,6 @@
       background: #24BCEC;
       color: #fff !important;
     }
-
-    input[type=email],
-    input[type="password"] {
-      background: transparent;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 0 1px skyblue;
-      border-radius: 20px;
-    }
-
-    input[type=email]:focus,
-    input[type="password"]:focus {
-      box-shadow: 0 0 10px #FEA5E5;
-      color: #fff;
-    }
-
 
 
     .hover {
@@ -300,46 +222,8 @@
 </head>
 
 <body>
-<!-- form login -->
 
-  <div class="formLogin fadeInDown">
-    <div id="formContent">
-      <i class="fas fa-xmark d-flex color" id="delete" title="delete"></i>
-      <form action="login.html" method="post">
-        <p class="legend fadeIn-first">Login Here<span class="fa fa-hand-o-down"></span></p>
-        <div class="input">
-          <input type="email" placeholder="Email" class="fadeIn-second" name="email" required />
-          <span class="fa fa-envelope"></span>
-        </div>
-        <div class="input">
-          <input type="password" placeholder="Password" class="fadeIn-third" name="password" required />
-          <span class="fa fa-unlock"></span>
-        </div>
-        <button type="submit" class="btn bg rounded-pill fadeIn-fourth submit">Log in</button>
-      </form>
-    </div>
-  </div>
 
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container-fluid">
-      
-      <a class="navbar-brand" href="#"><img style="width: 20%;" src="/static/logo.png" alt=""></a>
-      <div class="navbar d-flex justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link btn p-2 rounded-pill" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn p-2 rounded-pill" href="#">Help</a>
-          </li>
-          <li>
-            <a id="login" class="nav-link btn bg p-2 rounded-pill">Connexion<i class="fas fa-user-plus ml-1"
-                title="Sign-in"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <div class="container">
     <div id="myCarousel" class="carousel slide " data-bs-ride="carousel">
       <!-- Carousel indicators -->
@@ -354,13 +238,11 @@
           <div class="d-none d-md-block">
             <div class="row m-5 no-gutters shadow bg-danger round">
               <div class="col-md-6 col-sm-12 bg rounded-left p-15">
-                <h3 class="pb-3">Model for the Children</h3>
-                <h3 class="pb-5 txt">Keep your child safe and secure with our Bracelet Helper</h3>
+                <h3 class="pb-3">Modèle pour les enfants</h3>
+                <h3 class="pb-5 txt">Gardez votre enfant en sécurité avec notre assistant de bracelet</h3>
                 <div class="mt-4 d-flex justify-content-center">
-                  <a href="/Child/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('child').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Fill in
-                    the informations</button></a>
+                  <a href="/Child/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('child').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Remplissez les informations</button></a>
                   <form id="child" action="/Child/{{id}}" method="POST" style="display: none;">
-                    @csrf
                   </form>
                 </div>
               </div>
@@ -369,18 +251,26 @@
               </div>
             </div>
           </div>
+          <div class="d-md-none">
+            <div class="row m-5 no-gutters shadow bg-danger round">
+              <div class="col-md-6 col-sm-12">
+                <img src="/static/lost.webp" class="img-fluid rounded-top" style="width:100%" />
+                <a href="/Child/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('child').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Remplissez les informations</button></a>
+                <form id="child" action="/Child/{{id}}" method="POST" style="display: none;">
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
           <div class="d-none d-md-block">
             <div class="row m-5 no-gutters shadow bg-danger round">
               <div class="col-md-6 col-sm-12 bg rounded-left p-15">
-                <h3 class="pb-3">Model for the elderly</h3>
-                <h3 class="pb-5 txt">Keep your parents safe and secure with our Bracelet Helper</h3>
+                <h3 class="pb-3">Modèle pour les personnes âgées</h3>
+                <h3 class="pb-5 txt">Gardez vos parents en sécurité avec notre assistant de bracelet</h3>
                 <div class="mt-4 d-flex justify-content-center">
-                  <a href="/Old/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('old').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Fill in
-                    the informations</button></a>
+                  <a href="/Old/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('old').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Remplissez les informations</button></a>
                   <form id="old" action="/Old/{{id}}" method="POST" style="display: none;">
-                    @csrf
                   </form>
                 </div>
               </div>
@@ -390,6 +280,16 @@
               </div>
             </div>
 
+          </div>
+          <div class="d-md-none">
+            <div class="row m-5 no-gutters shadow round">
+              <div class="col-md-6 col-sm-12 container">
+                <img src="/static/old.jpg" class="img-fluid rounded-top" style="width:100%" />
+                <a href="/Old/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('old').submit();"><button type="submit" class="btn w-100 bg-pink font-weight-bold">Remplissez les informations</button></a>
+                <form id="old" action="/Old/{{id}}" method="POST" style="display: none;">
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -436,7 +336,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2023 Copyright
+      <p class="text-dark">Bracelet Helper &copy; 2023 Copyright</p>
       <a class="text-white" href="#"></a>
     </div>
     <!-- Copyright -->
@@ -445,12 +345,3 @@
 
 </html>
 
-
-<script>
-  document.querySelector('#login').onclick = () => {
-    document.querySelector('.formLogin').classList.toggle('active');
-  }
-  document.getElementById("delete").onclick = () => {
-    document.querySelector('.formLogin').classList.remove('active');
-  }
-</script>

@@ -22,6 +22,10 @@ def encrypt_data(data):
 def decrypt_data(data):
     return cipher.decrypt(data).decode('utf-8')
 
+@app.route('/')
+def login():
+        return render_template('login.html')
+
 
 @app.route('/Person/<id>')
 def home(id):

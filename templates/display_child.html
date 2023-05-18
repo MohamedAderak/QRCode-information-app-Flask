@@ -15,8 +15,8 @@
     <script src="https://kit.fontawesome.com/fd1951dcdd.js" crossorigin="anonymous"></script>
     <title>Bracelet Helper</title>
     <style>
-        .card-registration{
-            top: 13px;
+        .card-registration {
+            margin-top: 13px;
         }
 
         .card {
@@ -26,99 +26,66 @@
 </head>
 
 <body>
-    <div class="container py-5 h-100 ">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <img src="/static/logo.png" alt="Logo" style="width: 25%;" class="img-responsives">
-            <div class="card card-registration my-4">
-                <div class="card-body p-md-5 text-black">
-                    <div class="d-flex">
-                        <img src="{{Person['Image']}}" alt="Photo" class="img-fluid my-5" style="width: 80px;" />
-                        <h3 class="text-center m-5 pt-5">Informations Personelles :</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="nom">Nom :</h5>
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 text-center mb-4">
+                <img src="/static/logo.png" alt="Logo" style="max-width: 200px;" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <div class="card card-registration">
+                    <div class="card-body p-md-5 text-black">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img src="{{Person['Image']}}" alt="Photo" class="img-fluid my-5" style="max-width: 120px;">
+                                <h3 class="m-0">Informations Personnelles:</h3> <br>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Nom:</h5>
                                 <p>{{ Person['First_name'] }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="prenom">Prénom : </h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Prénom:</h5>
                                 <p>{{ Person['Last_name'] }}</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="birthday">Date de naissance : </h5>
-                                <p> {{ Person['date_Naissance'] }}</p>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Date de naissance:</h5>
+                                <p>{{ Person['date_Naissance'] }}</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="Mother_name">Mere :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Mère:</h5>
                                 <p>{{ Person['Mother_name'] }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="Father_name">Pere :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Père:</h5>
                                 <p>{{ Person['Father_name'] }}</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="phone_number">N° de Tel des proches :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">N° de Tel des proches:</h5>
                                 <p>{{ Person['Mother_Phone'] }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="phone_number2">Autre N° de Tel des proches :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Autre N° de Tel des proches:</h5>
                                 <p>{{ Person['Father_Phone'] }}</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="adress">Addresse :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Adresse:</h5>
                                 <p>{{ Person['Adress'] }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-outline d-flex">
-                                <h5 class="mb-0 me-4" for="email">Email :</h5>
+                            <div class="col-md-6 mb-4">
+                                <h5 class="mb-0">Email:</h5>
                                 <p>{{ Person['Email'] }}</p>
                             </div>
                         </div>
-                    </div>
-
-
-                    <hr>
-                    <h3 class="text-center  m-5">Informations de Santé :</h3>
-                    <div class="row ">
-
-                        <div class="col-md-6 mb-4">
-                            <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                <h6 class="mb-0 me-4">Group sanguin et rhésus : </h6>
-                                <p class="mb-0 me-4">{{ Person['sanguin'] }}</p>
-                            </div>
-                        </div>
+                        <hr>
+                        <h3 class="text-center mt-5 mb-4">Informations de Santé:</h3>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <div class="d-flex justify-content-start align-items-center mb-2 py-2">
-                                    <h6 class="col-md-4 mb-0 me-4">Important Information : </h6>
-                                </div>
-                                <p class="mb-0 me-4 ">{{ Person['more'] }}</p>
+                                <h6 class="mb-0">Groupe sanguin et rhésus:</h6>
+                                <p>{{ Person['sanguin'] }}</p>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <h6 class="mb-0">Informations importantes:</h6>
+                                <p>{{ Person['more'] }}</p>
                             </div>
                         </div>
                     </div>
