@@ -1,191 +1,304 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/fd1951dcdd.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
     <title>Bracelet Helper - enfants</title>
-    <style>
-        .card-registration .select-input.form-control[readonly]:not([disabled]) {
-            font-size: 1rem;
-            line-height: 2.15;
-            padding-left: .75em;
-            padding-right: .75em;
-        }
-
-        .card-registration .select-arrow {
-            top: 13px;
-        }
-
-        form{
-            background-image: url("/static/lost.webp");
-            background-position: center;
-            background-size: 50%;
-            background-repeat: no-repeat;
-        }
-        /* form {
-            background-color: aliceblue;
-        } */
-
-    </style>
 </head>
-
 <body>
-    <section class="h-100 bg-light">
-        <div class="container py-5 h-100">
-            <a href="/back/{{id}}" class="" onclick="event.preventDefault(); document.getElementById('home').submit();"><i class="fa-solid fa-lg fa-arrow-left rounded-5 p-4 spinner-grow bg-light"></i></a>
-            <form id="home" action="/back/{{id}}" method="POST" style="display: none;">
-              @csrf
+    
+
+
+<section class=" py-1 bg-blueGray-50">
+<div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="rounded-t bg-white mb-0 px-6 py-6">
+      <div class="text-center flex justify-between">
+      
+            <form id="home" action="/back/{{id}}" method="POST" >
+              <button class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
+                Back
+              </button>
             </form>
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col">
-                    <div class="card card-registration my-4">
-                        <div class="row g-0">
-                            <form action="/addchild/{{id}}" enctype="multipart/form-data" method="post" class="col needs-validation m-0" novalidate>
-                                <h3 class="text-center m-5">Renseignements Personnels :</h3>
-                                <div class="card-body p-md-5 text-black">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text" id="nom" name="nom"
-                                                    class="form-control form-control-lg" required/>
-                                                <label class="form-label" for="nom">First name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text" id="prenom" name="prenom"
-                                                    class="form-control form-control-lg" required/>
-                                                <label class="form-label" for="prenom">Last name</label>
-                                            </div>
-                                        </div>
-                                    </div>
+        
+        <h6 class="text-blueGray-700 text-xl font-bold">
+            Remplissez les informations
+        </h6>
+      </div>
+    </div>
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+      <form method="post" action="/addchild/{{id}}" enctype="multipart/form-data">
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            Renseignements Personnels :
+        </h6>
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                Nom
+              </label>
+              <input required type="text" placeholder="Enfant Nom" id="nom" name="nom"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                Prénom
+              </label>
+              <input required type="text" id="prenom" name="prenom" placeholder="Enfant Prénom" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                Ajouter une photo de vous :
+              </label>
+              <input type="file"  id="image-old" name="image-old" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input required_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                Date de naissance
+              </label>
+              <input required type="date"  id="birthday" name="birthday"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+            </div>
+          </div>
+          <div class="w-full lg:w-4/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="city">
+                Ville
+              </label>
+              <input required type="text" id="city" name="city" placeholder="Ville" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+            </div>
+          </div>
+          <div class="w-full lg:w-8/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                adresse
+              </label>
+              <input required type="text" id="adresse" name="adresse" placeholder="Adresse" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+            </div>
+          </div>
 
-                                    <div class="row">
-                                        <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-                                            <div class="col-md-6 mb-4">
-                                                <h6 class="mb-0 me-4">Groupe sanguin et rhésus : </h6>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <select class="form-select w-50" name="sanguin" required>
-                                                    <option value="" disabled selected>Groupe sanguin</option>
-                                                    <option value="A+">A+</option>
-                                                    <option value="B+">B+</option>
-                                                    <option value="O+">O+</option>
-                                                    <option value="AB+">AB+</option>
-                                                    <option value="A-">A-</option>
-                                                    <option value="B-">B-</option>
-                                                    <option value="O-">O-</option>
-                                                    <option value="AB-">AB-</option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    Please select one.
-                                                </div>
+        </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text" id="mother" name="mother"
-                                                    class="form-control form-control-lg" required/>
-                                                <label class="form-label" for="mother">Mother's name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="text" id="father" name="father"
-                                                    class="form-control form-control-lg" required/>
-                                                <label class="form-label" for="father">Father's name</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="tel" id="phone" name="phone"
-                                                    class="form-control form-control-lg" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxLength="10" required/>
-                                                <label class="form-label" for="phone">Mother's Phone Number</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <input type="tel" id="phone2" name="phone2"
-                                                    class="form-control form-control-lg" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxLength="10" required/>
-                                                <label class="form-label" for="phone2">Father's Phone Number</label>
-                                            </div>
-                                        </div>
-                                    </div>
+        <hr class="mt-6 border-b-1 border-blueGray-300">
 
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            INFORMATIONS DE CONTACT
+          </h6>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_number">
+                    Téléphone du père
+                </label>
+                <input required type="tel" id="phone_number"  name="phone1" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxlength="10" >
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_number">
+                    Téléphone du mère
+                </label>
+                <input type="tel" id="phone_number" name="phone1" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxlength="10" >
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_number2">
+                    Téléphone du médecin
+                </label>
+                <input type="tel" id="phone_number2" name="phone2" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxlength="10" >
+              </div>
+            </div>
+          </div>
+          
+        <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="adress" name="adress" class="form-control form-control-lg" required/>
-                                        <label class="form-label" for="adress">Address</label>
-                                    </div>
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+          Informations sur la Santé :
+        </h6>
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                Il/Elle est :
+              </label>
+          
+              <div class="flex items-center mb-2">
+                <input id="Sourd" type="checkbox" value="Sourd" name="sm" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Sourd" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sourd</label>
+              
+                <input id="Malvoyant" type="checkbox" value="Malvoyant" name="sm" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Malvoyant" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Malvoyant</label>
+              </div>
+              
+            </div>
+          </div>
 
-                                    <div class="d-md-flex justify-content-between align-items-center mb-4 py-2">
-                                        <h6 class="mb-0 w-75">Add picture of the child : </h6>
-                                        <input type="file" id="image" name="image" class="form-control form-control-lg"/>
-                        
-                                    </div>
+          <div class="w-full md:w-4/12 mb-4 px-4">
+            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+              Groupe sanguin et rhésus :
+            </label>
+    
+            <div class="relative">
+              <select required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="sanguin" >
+                <option value="" disabled selected>Groupe sanguin</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="O+">O+</option>
+                <option value="AB+">AB+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="O-">O-</option>
+                <option value="AB-">AB-</option>
+              </select>
+             
+            </div>
+          </div>
 
-                                    <div class="form-outline mb-4">
-                                        <input type="email" id="email" name="email" class="form-control form-control-lg" required/>
-                                        <label class="form-label" for="email">Email :</label>
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                        <input type="date" class="form-control form-control-lg" name="dateNaissance" id="dateNaissance" required/>
-                                        <label class="form-label" for="date">Date de naissance :</label>
-                                    </div>
+          <div class="w-full lg:w-4/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                Poids:
+              </label>
+          
+              <input required type="number" id="poids" placeholder="Enfant Poids" name="poids"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                
+              
+            </div>
+          </div>
+          
+          <div class="w-full md:w-8/12 mb-2 px-4"></div>
 
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="more">Important Information </label>
-                                            <textarea class="form-control form-control-lg fw-lighter fs-6" name="more" id="more" cols="10" rows="5" placeholder="Tell us more information like medicines or health broblems...etc"></textarea>
-                                        </div>
-                                    </div>
+          <div class="w-full md:w-4/12 mb-2 px-4">
+            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+              Maladie chronique :
+            </label>
+            <select required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  id="chronique" name="chronique">
+              <option value="" disabled selected>Maladie chronique</option>
+              <option value="--Rien--">--Rien--</option>
+              <option value="Maladie de Crohn">Maladie de Crohn</option>
+              <option value="Colite ulcéreuse">Colite ulcéreuse</option>
+              <option value="Maladie cœliaque">Maladie cœliaque</option>
+              <option value="Diabète de type 1">Diabète de type 1</option>
+              <option value="Asthme">Asthme</option>
+              <option value="Épilepsie">Épilepsie</option>
+              <option value="Syndrome de l'immunodéficience acquise (SIDA)">Syndrome de l'immunodéficience acquise (SIDA)</option>
+              <option value="Drépanocytose">Drépanocytose</option>
+              <option value="Fibrose kystique">Fibrose kystique</option>
+              <option value="Maladies cardiaques congénitales">Maladies cardiaques congénitales</option>
+              <option value="Autres...">Autres...</option>
+            </select>
+            
+          </div>
 
-                                    <div class="d-flex justify-content-center pt-3 mb-4">
-                                        <button type="submit" class="btn btn-outline-primary btn-lg ms-2">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+          <div class="w-full lg:w-8/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                Autre Maladie chronique :
+              </label>
+              <input required type="text"  name="autremaladiecronique" id="autremaladiecronique"  placeholder="Autre Maladie chronique..." class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+            </div>
+          </div>
+
+          <div class="w-full md:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                Maladie actuelle :
+              </label>
+            <input required type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="maladieactuelle" id="maladieactuelle" placeholder="La grippe, fièvre, etc..." >
+           </div>
+         </div>
+         <div class="w-full md:w-12/12 px-4">
+          <div class="relative w-full mb-3">
+            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+              Traitement actuelle :
+            </label>
+          <textarea required type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="Traitementactuelle" id="Traitementactuelle" placeholder="Paracetamol, xx, ect..." ></textarea>
+         </div>
+       </div>
+
+       <div class="w-full md:w-4/12 mb-3 px-4">
+        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+          Allergies :
+        </label>
+        <select required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="allergies" id="allergies" >
+          <option value="" disabled selected>Allergies</option>
+          <option value="Rien">--Rien--</option>
+          <option value="Allergie alimentaire">Allergie alimentaire</option>
+          <option value="Allergie au pollen">Allergie au pollen</option>
+          <option value="Allergie aux acariens">Allergie aux acariens</option>
+          <option value="Allergie aux animaux domestiques">Allergie aux animaux domestiques</option>
+          <option value="Allergie aux piqûres d'insectes">Allergie aux piqûres d'insectes</option>
+          <option value="Allergie au latex">Allergie au latex</option>
+          <option value="Allergie aux médicaments">Allergie aux médicaments</option>
+          <option value="Allergie au venin d'abeille">Allergie au venin d'abeille</option>
+          <option value="Allergie au venin de guêpe">Allergie au venin de guêpe</option>
+          <option value="Allergie au venin de frelon">Allergie au venin de frelon</option>
+        </select>
+      </div>
+      <div class="w-full md:w-8/12 px-4">
+        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+          Autre Allergie :
+        </label>
+        <input required type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="autreallergies" id="autreallergies" placeholder="Autre Allergie...">
+      </div>
+
+      <div class="w-full md:w-12/12 px-4">
+        <div class="relative w-full mb-3">
+          <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+            Antécédents médicaux :
+          </label>
+          <textarea required name="Traitementactuelle" id="Traitementactuelle" placeholder="Paracetamol, xx, etc..." class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"></textarea>
+
+       </div>
+     </div>
+
+     <div class="w-full md:w-12/12 px-4">
+      <div class="relative w-full mb-3">
+        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+          Antécédents chirurgicaux :
+        </label>
+      <textarea required type="text" name="antecedchirurgicaux" id="antecedchirurgicaux" placeholder="Paracetamol, xx, ect..." class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="Traitementactuelle" id="Traitementactuelle" placeholder="Paracetamol, xx, ect..." ></textarea>
+     </div>
+   </div>
+
+   
+
+        </div>
+        <div class="w-full lg:w-12/12 px-4">
+            <div class="flex justify-center">
+              <button type="submit" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Soumettez Vos Informations</button>
             </div>
         </div>
-    </section>
+        
+      </form>
+    </div>
+  </div>
+  <footer class="relative  pt-8 pb-6 mt-2">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          &copy; 2023 Copyright <a href="#" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Bracelet Helper</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+</section>
+
+
 </body>
-
 </html>
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict';
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach((form) => {
-    form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-})();
-</script>
