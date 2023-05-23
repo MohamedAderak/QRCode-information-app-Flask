@@ -77,16 +77,16 @@
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                CIN
+                CIN :
               </label>
-              <input required type="text" id="numCIN" name="CIN"   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+              <input required type="text" id="numCIN" name="cin"   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
             </div>
           </div>
 
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="city">
-                City
+                Ville :
               </label>
               <input required type="text" id="city" name="city" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
             </div>
@@ -94,9 +94,9 @@
           <div class="w-full lg:w-8/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                address
+                Address :
               </label>
-              <input required type="text" id="address" name="address"    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
+              <input required type="text" id="address" name="adress"    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >
             </div>
           </div>
 
@@ -105,14 +105,14 @@
         <hr class="mt-6 border-b-1 border-blueGray-300">
 
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-            INFORMATIONS DE CONTACT
+            INFORMATIONS DE CONTACT :
           </h6>
           <div class="flex flex-wrap">
 
             <div class="w-full lg:w-6/12 px-4">
               <div class="relative w-full mb-3">
                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_number">
-                    Téléphone des proches
+                    Téléphone des proches :
                 </label>
                 <input required type="tel" id="phone_number" name="phone1" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxlength="10" >
               </div>
@@ -120,7 +120,7 @@
             <div class="w-full lg:w-6/12 px-4">
               <div class="relative w-full mb-3">
                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="phone_number2">
-                    Téléphone du médecin
+                    Téléphone du médecin :
                 </label>
                 <input required type="tel" id="phone_number2" name="phone2" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Tel (0xxxxxxxxx)" pattern="[0]{1}[0-9]{9}" minlength="10" maxlength="10" >
               </div>
@@ -181,20 +181,36 @@
           <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
-                Il/Elle est :
+                Malvoyant :
               </label>
           
               <div class="flex items-center mb-2">
-                <input id="Sourd" type="checkbox" value="Sourd" name="sm" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="Sourd" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sourd</label>
+                <input required id="Malvoyant-1" type="radio" value="Oui"  name="Malvoyant" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Malvoyant-1" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Oui</label>
               
-                <input id="Malvoyant" type="checkbox" value="Malvoyant" name="sm" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="Malvoyant" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Malvoyant</label>
+                <input required id="Malvoyant-2" type="radio" value="Non"  name="Malvoyant" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Malvoyant-2" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Non</label>
               </div>
               
             </div>
           </div>
-
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
+                Sourd :
+              </label>
+          
+              <div class="flex items-center mb-2">
+                <input required id="Sourd-1" type="radio" value="Oui"  name="Sourd" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Sourd-1" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Oui</label>
+              
+                <input required id="Sourd-2" type="radio" value="Non"  name="Sourd" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="Sourd-2" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Non</label>
+              </div>
+              
+            </div>
+          </div>
+   
           <div class="w-full md:w-4/12 mb-4 px-4">
             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
               Groupe sanguin et rhésus :
@@ -215,7 +231,7 @@
              
             </div>
           </div>
-
+          <div class="w-full md:w-2/12 mb-2 px-4"></div>
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
@@ -228,7 +244,7 @@
             </div>
           </div>
           
-          <div class="w-full md:w-8/12 mb-2 px-4"></div>
+          
 
           <div class="w-full md:w-4/12 mb-2 px-4">
             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
@@ -277,7 +293,7 @@
          <div class="w-full md:w-6/12 px-4">
           <div class="relative w-full mb-3">
             <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
-              Traitement actuelle :
+              Traitement actuel :
             </label>
           <input required type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="Traitementactuelle" id="Traitementactuelle" placeholder="Paracetamol, xx, ect..." >
          </div>
@@ -320,13 +336,15 @@
       <input required type="text" name="antecedchirurgicaux" id="antecedchirurgicaux" placeholder="Paracetamol, xx, ect..." class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="Traitementactuelle" id="Traitementactuelle" placeholder="Paracetamol, xx, ect..." >
      </div>
    </div>
-
-   <div class="w-full lg:w-12/12 px-4">
-    <div class="relative w-full mb-3">
+   
+   <div class="w-full lg:w-4/12 m-3 px-4">
+    <div class="relative w-full mb-3 ">
       <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">
         Pothèse titanique en places :
       </label>
     </div>
+  </div>
+  <div class="w-full md:w-4/12 mb-2 px-4">
       <div class="flex items-center mb-2">
         <input required id="pothesetitanique-1" type="radio" value="Oui"  name="pothesetitanique" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
         <label for="pothesetitanique-1" class="m-2 text-sm font-medium text-gray-900 dark:text-gray-300">Oui</label>

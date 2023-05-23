@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inscription - Bracelet Helper</title>
+  <!-- CORE CSS-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+    }
+
+    html {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .margin {
+      margin: 0 !important;
+    }
+    .error{
+      color: red;
+      font-size: x-large;
+    }
+  </style>
+
+</head>
+
+<body class="blue">
+
+  <div id="login-page">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form" method="post" action="/signup/{{id}}">
+        <div class="input-field col s12 center">
+          <img src="/static/logo.png" alt="logo" style="width: 40%;" class="responsive-img valign profile-image-login">
+          {% if msg != "" %}
+          <h3 class="error font-semibold text-center mt-2 p-2 rounded-lg bg-light">{{ msg }}</h3>
+          {% endif %}
+        </div>
+
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix" id="icon-username"></i>
+            <input id="username" type="text" name="username" value="{{ request.form.get('username', '') }}" required class="validate">
+            <label for="username" id="label-username" class="center-align">Username</label>
+          </div>
+        </div>
+
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-communication-email prefix" id="icon-email"></i>
+            <input id="email" type="email" name="email" value="{{ request.form.get('email', '') }}" required class="validate">
+            <label for="email" id="label-email" class="center-align">Email</label>
+          </div>
+        </div>
+
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix" id="icon-password"></i>
+            <input id="password" type="password" class="validate"  name="password" required>
+            <label for="password" id="label-username">Password</label>
+          </div>
+        </div>
+
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix" id="icon-password-again"></i>
+            <input id="password-again" class="validate" type="password" required name="confirm_password">
+            <label for="password-again" id="label-password-again">Re-type password</label>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="input-field col-12 d-flex margin justify-content-center align-items-center">
+              <input type="checkbox" class="form-check-input validate"   id="agree-policy" name="agree_policy" {% if request.form.get('agree_policy') %}checked{% endif %} required>
+              <label class="form-check-label" for="agree-policy">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms</a> and <a href="#" class="text-blue-600 hover:underline">Privacy</a> of use</label>
+              <div id="invalid-feedback" style="display: none; color: red; padding: 10px;">You must agree to the terms and privacy policy.</div>
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <button type="submit" class="btn waves-effect waves-light col s12" onclick="return validateForm()">S'inscrire</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function validateForm() {
+      var checkBox = document.getElementById("agree-policy");
+      var errorDiv = document.getElementById("invalid-feedback");
+
+  
+      if (checkBox.required && !checkBox.checked) {
+        errorDiv.style.display = "block";
+        return false; // Prevent form submission
+      } else {
+        errorDiv.style.display = "none";
+        return true; // Allow form submission
+      }
+    }
+  </script>
+  
+  
+  <!-- jQuery Library -->
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--materialize js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+</body>
+
+</html>

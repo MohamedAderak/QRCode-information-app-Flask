@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bracelet Helper</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <style>
+    body {
+      margin-top: -30px;
+      color: #1a202c;
+      text-align: left;
+      background-color: #e2e8f0;
+    }
+    .main-body {
+      padding: 15px;
+    }
+
+    .card {
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0 solid rgba(0,0,0,.125);
+    }
+    .card-body {
+      border-radius: 10px;
+      flex: 1 1 auto;
+      min-height: 1px;
+      padding: 1rem;
+    }
+    .gutters-sm {
+      margin-right: -8px;
+      margin-left: -8px;
+    }
+    .gutters-sm > .col, .gutters-sm > [class*=col-] {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+    .mb-3, .my-3 {
+      margin-bottom: 1rem !important;
+    }
+    .bg-gray-300 {
+      background-color: #6ec1fc;
+    }
+    .h-100 {
+      height: 100% !important;
+    }
+    .shadow-none {
+      box-shadow: none !important;
+    }
+    .section {
+      background-color: #6ec1fc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .modal-confirm {		
+      color: #636363;
+      width: 400px;
+    }
+    .modal-confirm .modal-content {
+      padding: 20px;
+      border-radius: 5px;
+      border: none;
+      text-align: center;
+      font-size: 14px;
+    }
+    .modal-confirm .modal-header {
+      border-bottom: none;   
+      position: relative;
+    }
+    .modal-confirm h4 {
+      text-align: center;
+      font-size: 26px;
+      margin: 30px 0 -10px;
+    }
+    .modal-confirm .close {
+      position: absolute;
+      top: -5px;
+      right: -2px;
+    }
+    .modal-confirm .modal-body {
+      color: #999;
+    }
+    .modal-confirm .modal-footer {
+      border: none;
+      text-align: center;		
+      border-radius: 5px;
+      font-size: 13px;
+      padding: 10px 15px 25px;
+    }
+    .modal-confirm .modal-footer a {
+      color: #999;
+    }		
+    .modal-confirm .icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      border-radius: 50%;
+      z-index: 9;
+      text-align: center;
+      border: 3px solid #f15e5e;
+    }
+    .modal-confirm .icon-box i {
+      color: #f15e5e;
+      font-size: 46px;
+      display: inline-block;
+      margin-top: 13px;
+    }
+    .modal-confirm .btn, .modal-confirm .btn:active {
+      color: #fff;
+      border-radius: 4px;
+      background: #2aa6ff;
+      text-decoration: none;
+      transition: all 0.4s;
+      line-height: normal;
+      min-width: 120px;
+      border: none;
+      min-height: 40px;
+      border-radius: 3px;
+      margin: 0 5px;
+    }
+    .modal-confirm .btn-secondary {
+      background: #c1c1c1;
+    }
+    .modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+      background: #a8a8a8;
+    }
+    .modal-confirm .btn-danger {
+      background: #f15e5e;
+    }
+    .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+      background: #ee3535;
+    }
+    .trigger-btn {
+      display: inline-block;
+    }
+    .error{
+      display: none;
+    }
+    .success{
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main-body">
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <div class="d-flex justify-content-center m-5">
+          <img src="/static/logo.png" style="width: 15%;" alt="logo">
+        </div>
+      </nav>
+      
+      <!-- /Breadcrumb -->
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body ">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="{{Person['image-old']}}" alt="old" class="rounded-circle" width="150">
+                <div class="mt-3">
+                  <h3>{{ Person['prenom'] }} {{ Person['nom'] }}</h3>
+                  <h5 class="text-secondary m-3">{{ Person['birthday'] }} Ans</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-3 section">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">CIN</h6>
+                <span class="text-secondary">{{ Person['cin'] }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Ville</h6>
+                <span class="text-secondary">{{ Person['city'] }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Adresse</h6>
+                <span class="text-secondary">{{ Person['adress'] }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">groupe sanguin</h6>
+                <span class="text-secondary">{{ Person['sanguin'] }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">poids</h6>
+                <span class="text-secondary">{{ Person['poids'] }} Kg</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Mutuelle</h6>
+                <span class="text-secondary">{{ Person['mutuelle'] }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-title p-3 section">
+              <h6 class="text-secondary m-1">INFORMATIONS DE CONTACT</h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6 class="mb-0">Téléphone des proches :</h6>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                  {{ Person['phone1'] }}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6 class="mb-0">Téléphone du médecin :</h6>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                  {{ Person['phone2'] }}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6 class="mb-0">Address email :</h6>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                  {{ Person['email'] }}
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-title p-3 section">
+              <h6 class="text-secondary m-1">INFORMATIONS SUR LA SANTE</h6>
+            </div>
+            <div class="card-body" >
+              <div class="{{div_class}}">
+
+              
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6 class="mb-0">Pothèse dentaire :</h6>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                  {{ Person['potheseDentaire'] }}
+                </div>
+              </div>
+              <hr>
+
+              
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h6 class="mb-0">Malvoyant :</h6>
+                  </div>
+                  <div class="col-sm-6 text-secondary">
+                    {{ Person['Malvoyant'] }}
+                  </div>
+                </div>
+                <hr>
+
+                
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h6 class="mb-0">Sourd :</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                      {{ Person['Sourd'] }}
+                    </div>
+                  </div>
+                  <hr>
+
+                  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Maladie chronique :</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                        {{ Person['chronique'] }}
+                      </div>
+                    </div>
+                    <hr>
+            
+                    
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Autre Maladie chronique :</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                          {{ Person['autremaladiecronique'] }}
+                        </div>
+                      </div>
+                      <hr>
+
+                      
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <h6 class="mb-0">Maladie actuelle :</h6>
+                          </div>
+                          <div class="col-sm-6 text-secondary">
+                            {{ Person['maladieactuelle'] }}
+                          </div>
+                        </div>
+                        <hr>
+
+                        
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <h6 class="mb-0">Traitement actuel :</h6>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                              {{ Person['Traitementactuelle'] }}
+                            </div>
+                          </div>
+                          <hr>
+                
+                    
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Allergies :</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                          {{ Person['allergies'] }}
+                        </div>
+                      </div>
+                      <hr>
+
+                      
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <h6 class="mb-0">Autre Allergies :</h6>
+                          </div>
+                          <div class="col-sm-6 text-secondary">
+                            {{ Person['autreallergies'] }}
+                          </div>
+                        </div>
+                        <hr>
+
+                        
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <h6 class="mb-0">Antécédents médicaux :</h6>
+                            </div>
+                            <div class="col-sm-6 text-secondary">
+                              {{ Person['antecedmedicaux'] }}
+                            </div>
+                          </div>
+                          <hr>
+
+                          
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <h6 class="mb-0">Antécédents chirurgicaux :</h6>
+                              </div>
+                              <div class="col-sm-6 text-secondary">
+                                {{ Person['antecedchirurgicaux'] }}
+                              </div>
+                            </div>
+                            <hr>
+                            
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <h6 class="mb-0">Pothèse titanique en places :</h6>
+                                </div>
+                                <div class="col-sm-6 text-secondary">
+                                  {{ Person['pothesetitanique'] }}
+                                </div>
+                              </div>
+                              <hr>
+                            </div>
+
+                    {% if div_class == "error" %}
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <a  href="#myModal" class="trigger-btn btn btn-primary col-12" id="showCodeButton" data-toggle="modal">MONTRER LES INFORMATIONS!</a>
+                          </div>
+                        </div>
+                    {% endif %}
+              
+            </div>
+           
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+      <div class="modal-content">
+        <div class="modal-header flex-column">				
+          <h4 class="modal-title w-100">Appelez les parents pour le Code </h4>	
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <form method="post" action="/verify_code/{{id}}" >
+            <div class="modal-body">
+              <input required type="text" id="codeInput" name="codeInput" class="form-control" placeholder="Enter code">
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="submit" class="col-12 btn btn-success">Sent</button>
+            </div>
+      </form>
+      </div>
+    </div>
+  </div>     
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
