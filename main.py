@@ -5,6 +5,9 @@ import os
 from werkzeug.utils import secure_filename
 import re
 import datetime
+import random
+import string
+
 
 
 
@@ -34,6 +37,12 @@ def calculate_age(birth_date):
 
     return age
 
+def generate_unique_code():
+    characters = string.ascii_uppercase + string.ascii_lowercase + string.digits
+    code = ''.join(random.choices(characters, k=6))
+    return code
+
+
 @app.route('/')
 def login():
         return render_template('/user/login.html', msg = '')
@@ -55,8 +64,13 @@ def logout():
     return redirect('/login')
 
 @app.route('/profil')
-def user_interface(msg, username):
-    return render_template('/user/user_interface.html', msg = msg, username = username)
+def user_interface(username):
+    user = users.find_one({'user': username})
+    person_id = user['personId']
+
+    # Retrieve person data
+    person = db.Person.find_one({'_id': person_id})
+    return render_template('/user/user_interface.html', username = username, person = person)
 
 
 def is_password_strong(password):
@@ -89,7 +103,6 @@ def signup(id):
         'personId': id
     }
 
-    # Insert the new user document into the database
     users.insert_one(new_user)
     return redirect(url_for('home', id=id))
 
@@ -103,23 +116,28 @@ def loginVerify():
     user = users.find_one({"email": email})
     if user and password == decrypt_data(user['password']):
         username = user['user']
-        msg = "Login successful"
-        if remember:
-            resp = make_response(user_interface(msg, username))
-            resp.set_cookie('email', email)
-            return resp
-        return user_interface(msg, username)
+        return user_interface(username)
     else:
         return render_template('/user/login.html', msg = "Invalid email or password")
         
+@app.route('/generateCode/<username>', methods=['POST'])
+def generate_code(username):
+    user = users.find_one({'user': username})
+    id = user['personId']
+    unique_code = request.form.get('unique_code')
+    db.Person.update_one({'_id': id}, {'$set': {'unique_code': unique_code}})
 
+    return user_interface(username)
 
 @app.route('/Person/<id>')
 def inscription(id):
+    user = users.find_one({'personId': id})
     PersonId = db.Person.find_one({'_id': id})    
     if PersonId is not None and PersonId['data'] is True:
         div_class = "error"
         return display(id, div_class)
+    elif user:
+        return redirect(url_for('home', id=id))
     else :
          msg = ""
          return render_template('/user/inscription.html', id = id, msg = msg)
@@ -151,6 +169,7 @@ def addold(id):
     PersonId = db.Person.find_one({'_id': id})
     
     if PersonId is not None:
+        unique_code = generate_unique_code()
         if request.files['image-old'] is None:
             file = request.files['image-old']
             filename = secure_filename(file.filename)
@@ -163,6 +182,7 @@ def addold(id):
             '$set': {
                 'data': True,
                 'model': "old",
+                'unique_code': unique_code,
                 'nom': encrypt_data(request.form['nom']),
                 'prenom': encrypt_data(request.form['prenom']),
                 'birthday': encrypt_data(request.form['birthday']),
@@ -215,7 +235,8 @@ def formchild(id):
 def addchild(id):
     PersonId = db.Person.find_one({'_id': id})
     if PersonId is not None:
-        if request.files['image-child'] is not None:
+        unique_code = generate_unique_code()
+        if request.files['image-child'] is None:
             file = request.files['image-child']
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['IMAGE_FOLDER'], filename).replace('\\', '/')
@@ -227,6 +248,7 @@ def addchild(id):
             '$set': {
                 'data': True,
                 'model': "child",
+                'unique_code': unique_code,
                 'nom': encrypt_data(request.form['nom']),
                 'prenom': encrypt_data(request.form['prenom']),
                 'email': encrypt_data(request.form['pere_email']),
@@ -330,15 +352,10 @@ def display(id, div_class):
 @app.route('/verify_code/<id>', methods=['POST'])
 def verify_code(id):
     entered_code = request.form['codeInput']
-
-    # Query the database to check if the code exists
-    # code = db.Person.find_one({'code': entered_code})
-
-    if entered_code == "12345":
-        # Code exists, change the class of the div to 'success'
+    code = db.Person.find_one({'unique_code': entered_code})
+    if code:
         div_class = 'success'
     else:
-        # Code does not exist, change the class of the div to 'error'
         div_class = 'error'
 
     return display(id, div_class)
